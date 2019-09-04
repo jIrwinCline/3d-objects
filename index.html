@@ -36,28 +36,25 @@
           camera.setTarget(BABYLON.Vector3.Zero());
           camera.attachControl(canvas,true);
 
-          var light = new BABYLON.PointLight("pointLight", new BABYLON.Vector3(0,10,0),scene);
-          light.diffuse = new BABYLON.Color3(1,0,0);
-
-          scene.actionManager = new BABYLON.ActionManager(scene);
-          scene.actionManager.registerAction(
-            new BABYLON.ExecuteCodeAction( { trigger: BABYLON.ActionManager.OnKeyUpTrigger, parameter: " "},
-            function(){
-              light.setEnabled(!light.isEnabled());
-            }));
-
+          var light = new BABYLON.SpotLight("spotLight", new BABYLON.Vector3(0,10,0), new BABYLON.Vector3(0,-1,0),
+          BABYLON.Tools.ToRadians(45), 0.1, scene);
 
           camera.keysUp.push(87);
           camera.keysDown.push(83);
           camera.keysLeft.push(65);
           camera.keysRight.push(68);
+
+          // var material = new BABYLON.StandardMaterial("material",scene);
+          // material.wireframe = true;
+          // box.material = material;
+          //
           return scene;
         }
         var scene = createScene();
         engine.runRenderLoop(function(){
-          var light = scene.getLightByName("pointLight");
-          light.diffuse.g += 0.01;
-          light.diffuse.b += 0.01;
+          var light = scene.getLightByName("spotLight");
+          light.position.y -= 0.01;
+
           scene.render();
         });
       });
