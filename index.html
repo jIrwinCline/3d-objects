@@ -45,7 +45,7 @@
             function(){
               light.setEnabled(!light.isEnabled());
             }));
-          
+
 
           camera.keysUp.push(87);
           camera.keysDown.push(83);
@@ -55,6 +55,9 @@
         }
         var scene = createScene();
         engine.runRenderLoop(function(){
+          var light = scene.getLightByName("pointLight");
+          light.diffuse.g += 0.01;
+          light.diffuse.b += 0.01;
           scene.render();
         });
       });
