@@ -52,16 +52,16 @@
           material.diffuseColor = BABYLON.Color3.Blue();
           // material.emissiveColor = BABYLON.Color3.Red();
           // material.specularColor = BABYLON.Color3.Red();
-          material.alpha = 0.7
+          material.alpha = 0.7;
           box.material = material;
 
           return scene;
         }
         var scene = createScene();
         engine.runRenderLoop(function(){
-          var light = scene.getLightByName("spotLight");
-          light.position.y -= 0.01;
-
+          var material = scene.getMeshByName("Box").material;
+          material.alpha -= 0.01;
+          if(material.alpha <= 0) material.alpha = 1;
           scene.render();
         });
       });
