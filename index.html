@@ -44,10 +44,14 @@
           camera.keysLeft.push(65);
           camera.keysRight.push(68);
 
-          // var material = new BABYLON.StandardMaterial("material",scene);
-          // material.wireframe = true;
-          // box.material = material;
-          //
+          var light = new BABYLON.PointLight("pointLight", new BABYLON.Vector3(0,10,0),scene)
+          light.parent = camera;
+          light.diffuse = new BABYLON.Color3(1,1,1);
+
+          var material = new BABYLON.StandardMaterial("material",scene);
+          material.diffuseColor = BABYLON.Color3.Blue();
+          box.material = material;
+
           return scene;
         }
         var scene = createScene();
