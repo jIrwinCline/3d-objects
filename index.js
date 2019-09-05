@@ -20,7 +20,7 @@ window.addEventListener("DOMContentLoaded", function() {
     camera.setTarget(BABYLON.Vector3.Zero());
     camera.attachControl(canvas,true);
 
-    shark = BABYLON.SceneLoader.ImportMesh("", "./", "shark.glb", scene, function (newMeshes) {
+    shark = BABYLON.SceneLoader.ImportMesh("", "./", "subaru.glb", scene, function (newMeshes) {
         // Set the target of the camera to the first imported mesh
         camera.target = newMeshes[0];
     });
